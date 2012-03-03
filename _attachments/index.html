@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Lexington Public Art Mapper</title>
+        <title>Public Art Mapper</title>
         <link rel="stylesheet" href="style/main.css" type="text/css">
 	<script type="text/javascript" src="config.js"></script>
     </head>
     <body>
         <div id="content">
-        <h2>Lexington Public Art Mapper</h2>
+        <h2 id="app-title">Public Art Mapper</h2>
         <p>Send a geo-located tweet to <a id="twitter-link" href="http://twitter.com/PublicArtApp">@PublicArtApp</a> with location and a url to a photo of public artwork. <span id="demo">Take the tour</span></p>
         <div id="muralmap"></div>
         <p>(Note: Currently only images posted via twicpic, yfrog, &amp; lockerz are displayed.)</p>
         </div>
     </body>
     <script src="vendor/couchapp/loader.js"></script>
-    <script type="text/javascript"
-        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCJO7Y3igbon0wH1CsL9UfQSR1EhUqaZZ4&sensor=false">
+    <script type="text/javascript">
+	    var link = "http://maps.googleapis.com/maps/api/js?key=" + AppConfig.gmaps_api_key + "&sensor=false"
+	    document.write("<script src=\"" + link + "\" type=\"text\/javascript\"><\/script>")
     </script>
     <script type="text/javascript" charset="utf-8">
         var map;
 	function update_twitter_link() {
-		console.log("$: ", $)
-		var link = $("#twitter-link")
-		console.log("link: ", link)
-		link.replaceWith("<a href=\"http://twitter.com/" + MapConfig.twitter_id + "\">@" + MapConfig.twitter_id + "</a>")
+		$("#twitter-link").html("@" + AppConfig.twitter_id)
+	}
+        function update_page_title() {
+		$("#app-title").html(AppConfig.page_title)
+		$('title', 'head').html(AppConfig.page_title)
 	}
 	$(update_twitter_link)
+	$(update_page_title)
         $.couch.app(function(app) {
 		    var map;
 		    var allMarkers = [];
@@ -37,7 +40,7 @@
             iconBlue.anchor = new google.maps.Point(6, 20);
             iconBlue.origin = new google.maps.Point(0, 0);
 	    
-	        var latlng = new google.maps.LatLng(MapConfig.center_x, MapConfig.center_y);
+	        var latlng = new google.maps.LatLng(AppConfig.center_x, AppConfig.center_y);
             var myOptions = {
                 zoom: 13,
                 center: latlng,
