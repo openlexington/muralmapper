@@ -1,1 +1,1 @@
-worker: node twitter-poll.js
+worker: node node/twitter-poll.js
