@@ -5,3 +5,4 @@ node/config.js
 npm-debug.log
 node/npm-debug.log
 _attachments/config.js
+.DS_Store
