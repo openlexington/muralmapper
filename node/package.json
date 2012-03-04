@@ -2,11 +2,11 @@
   "name": "artmapper",
   "version": "1.0.0",
   "description" : "Node worker for artmapper",
-  "homepage" : "http://artmapper.org",
+  "homepage" : "http://lexingtonpublicart.org",
   "main" : "twitter-poll.js",
   "repository" : { 
     "type" : "git",
-    "url" : "git://github.com/codeforamerica/muralmapper.git"
+    "url" : "git://github.com/openlexington/muralmapper.git"
   },
   "engines" : {
     "node" : "v0.4.4 || v0.4.5 || v0.4.6 || v0.4.7"
